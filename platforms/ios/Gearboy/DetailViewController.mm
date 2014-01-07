@@ -17,9 +17,12 @@
  *
  */
 
+#import <GameController/GameController.h>
+
 #import "DetailViewController.h"
 
 @interface DetailViewController ()
+@property (readonly, nonatomic) BOOL gameControllerMode;
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 - (void)configureView;
 @end
@@ -46,6 +49,28 @@
     {
         [self.theGLViewController loadRomWithName:self.detailItem];
     }
+    
+    if (self.gameControllerMode) {
+        self.view.backgroundColor = [UIColor blackColor];
+        
+        for (UIView* subview in self.view.subviews)
+        {
+            if ([subview isKindOfClass:[UIImageView class]])
+            {
+                subview.backgroundColor = [UIColor blackColor];
+                ((UIImageView*)subview).image = nil;
+            }
+        }
+    
+        CGAffineTransform transform = CGAffineTransformMakeRotation(90 * M_PI / 180);
+        transform = CGAffineTransformScale(transform, 1.4, 1.4);
+        transform = CGAffineTransformTranslate(transform, 105.0, 0);
+        self.theGLViewController.view.transform = transform;
+    }
+}
+
+- (BOOL)gameControllerMode {
+    return [GCController controllers].count > 0;
 }
 
 - (void)viewDidLoad
@@ -62,8 +87,22 @@
     [super viewDidUnload];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (self.gameControllerMode) {
+        [UIApplication sharedApplication].statusBarHidden = YES;
+        
+        self.navigationController.navigationBarHidden = YES;
+    }
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
+    if (self.gameControllerMode) {
+        return NO;
+    }
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
         return (interfaceOrientation == UIInterfaceOrientationPortrait) || (interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
