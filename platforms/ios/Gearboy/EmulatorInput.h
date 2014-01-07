@@ -20,6 +20,8 @@
 #ifndef __Gearboy__EmulatorInput__
 #define __Gearboy__EmulatorInput__
 
+#import <GameController/GameController.h>
+
 #include "inputmanager.h"
 
 @class Emulator;
@@ -34,6 +36,8 @@ public:
     void Init();
     
 private:
+    void handleButton(GCControllerElement* element, GCControllerButtonInput* button, Gameboy_Keys key);
+    
     InputCallback<EmulatorInput>* m_pInputCallbackController;
     InputCallback<EmulatorInput>* m_pInputCallbackButtons;
     Emulator* m_pEmulator;

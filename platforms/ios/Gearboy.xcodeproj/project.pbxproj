@@ -69,6 +69,7 @@
 		66DCB36E15F940CC0076F6F6 /* DetailViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66DCB36C15F940CC0076F6F6 /* DetailViewController_iPad.xib */; };
 		66EB653C160FD1A200972E75 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EB653B160FD1A200972E75 /* Default-568h@2x.png */; };
 		66FB445F161866DA00F805ED /* MultiMBC1MemoryRule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66FB445D161866DA00F805ED /* MultiMBC1MemoryRule.cpp */; };
+		86D0B103187CA19F00A5033A /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D0B102187CA19F00A5033A /* GameController.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -184,6 +185,7 @@
 		66EB653B160FD1A200972E75 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "img/Default-568h@2x.png"; sourceTree = "<group>"; };
 		66FB445D161866DA00F805ED /* MultiMBC1MemoryRule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MultiMBC1MemoryRule.cpp; path = ../../src/MultiMBC1MemoryRule.cpp; sourceTree = "<group>"; };
 		66FB445E161866DA00F805ED /* MultiMBC1MemoryRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultiMBC1MemoryRule.h; path = ../../src/MultiMBC1MemoryRule.h; sourceTree = "<group>"; };
+		86D0B102187CA19F00A5033A /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86D0B103187CA19F00A5033A /* GameController.framework in Frameworks */,
 				66D4BA7F15FABBC500D4937F /* QuartzCore.framework in Frameworks */,
 				66D4BA7D15FABB9100D4937F /* OpenGLES.framework in Frameworks */,
 				66D4BA7B15FABB8600D4937F /* AudioToolbox.framework in Frameworks */,
@@ -334,6 +337,7 @@
 		66DCB34A15F940CC0076F6F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				86D0B102187CA19F00A5033A /* GameController.framework */,
 				66D4BA7A15FABB8600D4937F /* AudioToolbox.framework */,
 				66D4BA7815FABB7B00D4937F /* CoreAudio.framework */,
 				66DCB34F15F940CC0076F6F6 /* CoreGraphics.framework */,

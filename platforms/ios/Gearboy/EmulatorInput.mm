@@ -100,6 +100,35 @@ void EmulatorInput::Init()
             InputManager::Instance().AddCircleRegionEvent(192.0f, 653.0f, 100.0f, m_pInputCallbackController, 0, true);
         }
     }
+    
+    for (GCController* controller in [GCController controllers]) {
+        GCGamepad* gamepadProfile = controller.gamepad;
+        gamepadProfile.valueChangedHandler = ^(GCGamepad* gamepad, GCControllerElement* element) {
+            handleButton(element, gamepad.buttonA, Gameboy_Keys::A_Key);
+            handleButton(element, gamepad.buttonB, Gameboy_Keys::B_Key);
+            
+            // FIXME: Use "Pause" for Start
+            handleButton(element, gamepad.buttonX, Gameboy_Keys::Start_Key);
+            handleButton(element, gamepad.buttonY, Gameboy_Keys::Select_Key);
+            
+            if (element == gamepad.dpad) {
+                handleButton(nil, gamepad.dpad.up, Gameboy_Keys::Up_Key);
+                handleButton(nil, gamepad.dpad.down, Gameboy_Keys::Down_Key);
+                handleButton(nil, gamepad.dpad.left, Gameboy_Keys::Left_Key);
+                handleButton(nil, gamepad.dpad.right, Gameboy_Keys::Right_Key);
+            }
+        };
+    }
+}
+
+void EmulatorInput::handleButton(GCControllerElement* element, GCControllerButtonInput* button, Gameboy_Keys key) {
+    if (!element || button == element) {
+        if (button.isPressed) {
+            [m_pEmulator keyPressed:key];
+        } else {
+            [m_pEmulator keyReleased:key];
+        }
+    }
 }
 
 void EmulatorInput::InputController(stInputCallbackParameter parameter, int id)
